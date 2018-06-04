@@ -9,3 +9,12 @@ eureka:
 spring:
   application:
     name: service-test
+
+zuul:
+  routes:
+    service-demo:
+      path: /service-demo/**
+      serviceId: service-demo
+#    api-b:
+#      path: /api-b/**
+#      serviceId: service-feign

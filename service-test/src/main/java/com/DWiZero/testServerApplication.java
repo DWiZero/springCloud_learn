@@ -3,6 +3,7 @@ package com.DWiZero;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 /**
  * springCloud的服务注册中心
@@ -14,6 +15,7 @@ import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 //2，@EnableEurekaClient注解是基于spring-cloud-netflix依赖，只能为eureka作用；
 //如果你的classpath中添加了eureka，则它们的作用是一样的
 @EnableHystrix
+@EnableZuulProxy
 @SpringBootApplication
 public class testServerApplication
 {
