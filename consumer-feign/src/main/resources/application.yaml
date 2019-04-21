@@ -1,14 +1,20 @@
 server:
   port: 8765
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/
 
 spring:
   application:
     name: service-feign
+  cloud:
+    zookeeper:
+      connect-string: 192.168.68.130:2181
+      discovery:
+        register: true
+        enabled: true
 
 zuul:
   routes:

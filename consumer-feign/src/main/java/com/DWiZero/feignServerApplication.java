@@ -7,6 +7,7 @@ import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 @EnableZuulProxy
+@EnableHystrix
 @SpringBootApplication
 @EnableFeignClients
 public class feignServerApplication

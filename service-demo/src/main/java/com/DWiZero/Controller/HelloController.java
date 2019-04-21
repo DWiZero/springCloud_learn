@@ -8,14 +8,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController
 {
-    @Value("${server.port}")
-    String port;
-
-    @Value("${def.filePath}")
-    String foo;
+    //    @Value("${server.port}")
+    //    String port;
+    //
+    //    @Value("${def.filePath}")
+    //    String foo;
     @RequestMapping("/hi")
     public String home(@RequestParam String name)
     {
-        return "hi " + name+",i am from port:" +port +";"+foo;
+        return "hi " + name + ",i am from service-demo";
+//        return "hi " + name + ",i am from port:" + port + ";" + foo;
     }
 }
