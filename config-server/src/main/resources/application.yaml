@@ -1,11 +1,11 @@
 server:
   port: 9999
-
-#eureka:
-#  client:
-#    serviceUrl:
-#      defaultZone: http://localhost:8761/eureka/
-
+#
+##eureka:
+##  client:
+##    serviceUrl:
+##      defaultZone: http://localhost:8761/eureka/
+#
 spring:
   application:
     name: config-server
@@ -14,21 +14,22 @@ spring:
       active: local
 
     config:
-       server:
-         git:
-           uri: https://github.com/DWiZero/springCloud_learn
-           searchPaths: SpringCloudConfigs
-#           username: your username
-#           password: your password
-         label: master
+      server:
+        git:
+          uri: https://github.com/DWiZero/springCloud_learn
+          searchPaths: SpringCloudConfigs
+        #           username: your username
+        #           password: your password
+        label: master
     zookeeper:
-       connect-string: 192.168.68.130:2181
-       config:
-         root: cloud
-         enabled: true
-
-#spring.cloud.config.server.git.uri：配置git仓库地址。clone的地址去掉.git
-#spring.cloud.config.server.git.searchPaths：配置仓库路径：仓库下的文件路径
-#spring.cloud.config.label：配置仓库的分支
-#spring.cloud.config.server.git.username：访问git仓库的用户名
-#spring.cloud.config.server.git.password：访问git仓库的用户密码
+      connect-string: localhost:2181
+      discovery:
+#        register: true
+        #        enabled: true
+        root: /cloud
+#
+##spring.cloud.config.server.git.uri：配置git仓库地址。clone的地址去掉.git
+##spring.cloud.config.server.git.searchPaths：配置仓库路径：仓库下的文件路径
+##spring.cloud.config.label：配置仓库的分支
+##spring.cloud.config.server.git.username：访问git仓库的用户名
+##spring.cloud.config.server.git.password：访问git仓库的用户密码

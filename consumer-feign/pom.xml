@@ -22,11 +22,6 @@
     </properties>
 
     <dependencies>
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.cloud</groupId>-->
-        <!--<artifactId>spring-cloud-starter-eureka</artifactId>-->
-        <!--<version>1.4.4.RELEASE</version>-->
-        <!--</dependency>-->
 
         <!--ZooKeeper注册中心-->
         <dependency>
@@ -43,53 +38,28 @@
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-feign</artifactId>
-            <version>1.4.6.RELEASE</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.cloud</groupId>
-                    <artifactId>spring-cloud-netflix-core</artifactId>
-                </exclusion>
-            </exclusions>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <version>2.1.0.RELEASE</version>
         </dependency>
-
-        <!--&lt;!&ndash;用于负载均衡，已包含在spring-cloud-starter-eureka中&ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.cloud</groupId>-->
-            <!--<artifactId>spring-cloud-starter-ribbon</artifactId>-->
-            <!--<version>1.4.6.RELEASE</version>-->
-        <!--</dependency>-->
 
         <!--熔断器-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-hystrix</artifactId>
-            <version>1.4.6.RELEASE</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.cloud</groupId>
-                    <artifactId>spring-cloud-netflix-core</artifactId>
-                </exclusion>
-            </exclusions>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+            <version>2.1.0.RELEASE</version>
         </dependency>
+
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zuul</artifactId>
-            <version>1.4.6.RELEASE</version>
+            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+            <version>2.1.0.RELEASE</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-netflix-core</artifactId>
-            <version>2.0.0.RELEASE</version>
-            <!--<scope>compile</scope>-->
-        </dependency>
     </dependencies>
 
     <dependencyManagement>
         <dependencies>
-            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>

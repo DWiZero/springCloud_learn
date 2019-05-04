@@ -11,7 +11,7 @@ import org.springframework.cloud.config.server.EnableConfigServer;
  */
 @EnableConfigServer
 //@EnableEurekaClient
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 @SpringBootApplication
 public class configServerApplication
 {

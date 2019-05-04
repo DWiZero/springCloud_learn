@@ -1,0 +1,87 @@
+#最最最重要的问题
+版本问题  
+当Maven中有多个引用，包与包之间的引用冲突，包与使用的软件之间的冲突
+##细节问题
+**zooKeeper版本与引用的包的版本不对应**  
+Q:  
+org.apache.zookeeper.KeeperException$UnimplementedException: KeeperErrorCode = Unimplemented for...  
+
+A:  
+spring-cloud-starter-zookeeper-discovery 2.0.0依赖的curator版本为4.0.1;  
+Curator 4.0 has a hard dependency on ZooKeeper 3.5.x 
+If you are using ZooKeeper 3.5.x there’s nothing additional to do - just use Curator 4.0 
+
+参考：  <https://blog.csdn.net/forget_me_not1991/article/details/80902055>  
+
+---
+**ZooKeeper中节点路径是唯一的，该路径下已有节点时，继续往当前路径上新建节点就会报这个错**  
+Q:  
+KeeperErrorCode = NoNode for .....  
+
+A:  
+关闭ZooKeeper，将zoo.cfg里的自己设定的dataDir和dataLogDir路径下的version-2文件夹，然后重启即可。  
+---  
+
+<H4>服务注册中心使用ZooKeeper:服务节点无法注册到zookeeper</H4>  
+Q:  
+服务注册中心用eureka换为ZooKeeper，zookeeper正常启动且telnet检测正常  
+按照教程:  
+添加  
+```
+@EnableDiscoveryClient
+```
+```
+<dependency>  
+     <groupId>org.springframework.cloud</groupId>
+     <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>
+   </dependency>
+```
+```
+spring:
+  cloud:
+    zookeeper:
+      connect-string: localhost:2181
+      discovery:
+        //register: true
+        //enabled: true
+        root: /cloud  
+```
+注释掉  
+```
+@EnableEurekaClient
+```
+```
+<dependency>
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-starter-eureka-server</artifactId>
+</dependency>
+```
+```
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+```
+启动不报错，但是服务节点无法注册到zookeeper
+
+A:  
+检查依赖中有无spring-cloud-starter包：  
+```
+<dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter</artifactId>
+        </dependency>
+```
+
+**注意**  
+spring.cloud.zookeeper.discovery的register属性：  
+默认为true,设置为false时，不去注册  
+
+遗留问题：  
+1.  不添加@EnableEurekaClient和@EnableDiscoveryClient都可以注册成功  
+2.  zookeeper会报KeeperErrorCode = NoNode for .....  
+---

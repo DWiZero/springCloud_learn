@@ -10,13 +10,15 @@ spring:
   application:
     name: service-demo
   cloud:
-    config:
-      label: master
-      profile: local
-      discovery:
-        enabled: true
-        service-id: config-server
+#    config:
+#      label: master
+#      profile: local
+#      discovery:
+#        enabled: true
+#        service-id: config-server
     zookeeper:
-      connect-string: 192.168.68.130:2181
+      connect-string: localhost:2181
       discovery:
         register: true
+        enabled: true
+        root: /cloud
